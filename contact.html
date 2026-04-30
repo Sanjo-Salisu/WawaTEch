@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+
+    <style>
+         /* Brand animation */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(-10px);
+      animation: fadeIn 0.6s forwards;
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Desktop nav animation (smooth + immediate) */
+    .nav-anim {
+      opacity: 0;
+      transform: translateY(-8px);
+      animation: navFade 0.5s forwards;
+    }
+
+    .nav-anim:nth-child(1) { animation-delay: 0.05s; }
+    .nav-anim:nth-child(2) { animation-delay: 0.1s; }
+    .nav-anim:nth-child(3) { animation-delay: 0.15s; }
+    .nav-anim:nth-child(4) { animation-delay: 0.2s; }
+    .nav-anim:nth-child(5) { animation-delay: 0.25s; }
+
+    @keyframes navFade {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Hover underline */
+    .nav-link {
+      position: relative;
+    }
+
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      width: 0%;
+      height: 2px;
+      background: #2563eb;
+      transition: 0.3s;
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+    }
+
+
+/* floating animated lines */
+.lines {
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(
+    to right,
+    rgba(0,0,0,0.05) 1px,
+    transparent 1px
+  ),
+  linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.05) 1px,
+    transparent 1px
+  );
+
+  background-size: 60px 60px;
+
+  animation: moveGrid 20s linear infinite;
+}
+
+@keyframes moveGrid {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(60px);
+  }
+}
+
+/* visible grid overlay */
+.grid-overlay {
+  background-image: linear-gradient(rgba(0,0,0,0.05) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(0,0,0,0.05) 1px, transparent 1px);
+  background-size: 60px 60px;
+  animation: moveGrid 20s linear infinite;
+}
+
+/* animation */
+@keyframes moveGrid {
+  from { transform: translateY(0); }
+  to { transform: translateY(60px); }
+}
+
+/* fadeUp */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeUp {
+  animation: fadeUp 0.8s ease forwards;
+}
+
+.delay-200 { animation-delay: 0.2s; }
+.delay-400 { animation-delay: 0.4s; }
+
+
+/* ================= GLASS FORM ================= */
+.glass-form {
+  background: rgba(255,255,255,0.7);
+  backdrop-filter: blur(14px);
+
+  border-radius: 20px;
+  padding: 30px;
+
+  border: 1px solid rgba(255,255,255,0.4);
+
+  box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+}
+
+/* ================= INPUT ================= */
+.input-style {
+  width: 100%;
+  padding: 12px 16px;
+
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+
+  outline: none;
+  transition: all 0.25s ease;
+
+  background: white;
+}
+
+.input-style:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59,130,246,0.15);
+  transform: scale(1.02);
+}
+
+/* ================= BUTTON ================= */
+.submit-btn {
+  width: 100%;
+  background: linear-gradient(to right, #3b82f6, #6366f1);
+
+  color: white;
+  padding: 12px;
+
+  border-radius: 10px;
+  font-weight: 600;
+
+  transition: all 0.3s ease;
+}
+
+.submit-btn:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 15px 40px rgba(59,130,246,0.3);
+}
+
+/* ================= INFO CARDS ================= */
+.info-card {
+  background: white;
+  border-radius: 16px;
+
+  padding: 24px;
+
+  border: 1px solid rgba(0,0,0,0.06);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.05);
+}
+
+.info-card h3 {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.info-card p {
+  color: #6b7280;
+}
+
+/* ================= INFO ITEMS ================= */
+.info-item {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.info-item span {
+  font-size: 20px;
+}
+
+/* ================= FADE ================= */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeUp {
+  animation: fadeUp 0.8s ease forwards;
+}
+
+.delay-200 {
+  animation-delay: 0.2s;
+}
+
+
+
+
+
+
+    
+/* Brand title */
+.footer-brand-title {
+  font-size: 20px;
+  font-weight: 700;
+  margin-top: 12px;
+}
+
+/* =========================
+   SECTION HEADERS
+========================= */
+
+.footer-title {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  letter-spacing: 0.5px;
+}
+
+/* =========================
+   TEXT / LINKS
+========================= */
+
+.footer-list {
+  font-size: 15px;
+  color: #cbd5e1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer-list li {
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.footer-list li:hover {
+  color: #60a5fa;
+  transform: translateX(5px);
+}
+
+/* =========================
+   NEWSLETTER BOX (PREMIUM)
+========================= */
+
+.newsletter-box {
+  padding: 20px;
+  border-radius: 16px;
+
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(12px);
+
+  border: 1px solid rgba(255, 255, 255, 0.1);
+
+  transition: all 0.3s ease;
+}
+
+.newsletter-box:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 15px 40px rgba(59, 130, 246, 0.25);
+}
+
+/* Input */
+.newsletter-input {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 10px;
+
+  border: none;
+  outline: none;
+
+  font-size: 14px;
+}
+
+/* Button */
+.newsletter-btn {
+  width: 100%;
+  padding: 12px 14px;
+
+  border-radius: 10px;
+
+  background: #2563eb;
+  color: white;
+
+  font-weight: 600;
+
+  position: relative;
+  overflow: hidden;
+
+  transition: all 0.3s ease;
+}
+
+/* Hover */
+.newsletter-btn:hover {
+  background: #1d4ed8;
+  transform: scale(1.03);
+  box-shadow: 0 10px 25px rgba(37, 99, 235, 0.4);
+}
+
+/* Light sweep effect */
+.newsletter-btn::before {
+  content: "";
+  position: absolute;
+
+  top: 0;
+  left: -120%;
+
+  width: 120%;
+  height: 100%;
+
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
+
+  transition: 0.5s;
+}
+
+.newsletter-btn:hover::before {
+  left: 120%;
+}
+
+/* =========================
+   FOOTER LINKS BEHAVIOR
+========================= */
+
+.footer-list li {
+  transition: all 0.2s ease;
+}
+
+.footer-list li:hover {
+  transform: translateX(6px);
+  color: #60a5fa;
+}
+
+/* =========================
+   MOBILE IMPROVEMENT
+========================= */
+
+@media (max-width: 768px) {
+  .footer-col {
+    text-align: left;
+  }
+
+  .newsletter-box {
+    margin-top: 10px;
+  }
+}
+    </style>
+</head>
+<body>
+    
+<body class="bg-white">
+    
+<header class="fixed top-0 left-0 w-full bg-white/80 backdrop-blur-md z-50 border-b border-gray-100">
+
+  <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+
+    <!-- BRAND -->
+    <div class="flex items-center space-x-3 fade-in">
+
+      <div class="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center text-white font-bold">
+        W
+      </div>
+
+      <div class="flex flex-col leading-tight">
+        <span class="text-blue-600 font-bold text-lg">wawa</span>
+        <span class="text-gray-500 text-xs">tech hub</span>
+      </div>
+
+    </div>
+
+    <!-- DESKTOP NAV -->
+    <nav class="hidden md:flex space-x-8 text-gray-700 font-medium">
+
+      <a href="index.html" class="nav-link nav-anim">Home</a>
+      <a href="about.html" class="nav-link nav-anim">About Us</a>
+      <a href="services.html" class="nav-link nav-anim">Services</a>
+      <a href="why.html" class="nav-link nav-anim">Why Us</a>
+      <a href="contact.html" class="nav-link nav-anim">Contact</a>
+
+    </nav>
+
+    <!-- MOBILE BUTTON -->
+    <button id="menuBtn" class="md:hidden text-blue-600 font-bold text-lg">
+      ☰
+    </button>
+
+  </div>
+
+  <!-- MOBILE MENU -->
+  <div id="mobileMenu"
+    class="md:hidden max-h-0 overflow-hidden transition-all duration-300 border-t border-gray-100">
+
+    <div class="flex flex-col px-6 py-4 space-y-4 text-gray-700 font-medium">
+
+      <a href="index.html">Home</a>
+      <a href="about.html">About Us</a>
+      <a href="services.html">Services</a>
+      <a href="why.html">Why Us</a>
+      <a href="contact.html">Contact</a>
+
+    </div>
+  </div>
+
+
+</header>
+
+<section class="relative py-32 overflow-hidden bg-gradient-to-br from-blue-50 via-white to-purple-50">
+
+  <!-- GLOW BACKGROUND -->
+  <div class="absolute inset-0">
+    <div class="absolute w-[600px] h-[600px] bg-blue-400/30 rounded-full blur-3xl top-[-150px] left-[-150px] animate-pulse"></div>
+    <div class="absolute w-[500px] h-[500px] bg-purple-400/30 rounded-full blur-3xl bottom-[-150px] right-[-150px] animate-pulse"></div>
+  </div>
+
+  <!-- GRID OVERLAY -->
+  <div class="absolute inset-0 opacity-30 grid-overlay"></div>
+
+  <!-- CONTENT -->
+  <div class="relative max-w-4xl mx-auto px-6 text-center z-10">
+
+    <h1 class="text-4xl md:text-6xl font-bold text-gray-900 mb-6 animate-fadeUp">
+      Let’s Talk About Your Next Big Idea
+    </h1>
+
+    <p class="text-lg md:text-xl text-gray-600 leading-relaxed mb-10 animate-fadeUp delay-200">
+      Have a project in mind? We'd love to hear from you. Send us a message and we'll respond as soon as possible.
+    </p>
+
+    <!-- CTA BUTTONS -->
+    <div class="flex justify-center gap-4 flex-wrap animate-fadeUp delay-400">
+
+      <a href="contact.html"
+         class="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold 
+                hover:bg-blue-700 hover:scale-110 transition duration-300 shadow-lg">
+        Contact Us
+      </a>
+
+      <a href="services.html"
+         class="border border-gray-300 text-gray-700 px-8 py-3 rounded-lg font-semibold
+                hover:bg-gray-100 hover:scale-110 transition duration-300">
+        View Services
+      </a>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- ================= CONTACT SECTION ================= -->
+<section id="contact" class="relative py-28 px-6 bg-gradient-to-br from-blue-50 via-white to-purple-50 overflow-hidden">
+
+  <!-- BACKGROUND GLOW -->
+  <div class="absolute inset-0">
+    <div class="absolute w-[500px] h-[500px] bg-blue-400/20 blur-3xl rounded-full top-[-100px] left-[-100px]"></div>
+    <div class="absolute w-[400px] h-[400px] bg-purple-400/20 blur-3xl rounded-full bottom-[-100px] right-[-100px]"></div>
+  </div>
+
+  <div class="relative max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-start">
+
+    <!-- ================= LEFT: FORM (GLASS CARD) ================= -->
+    <div class="glass-form animate-fadeUp">
+
+      <h2 class="text-3xl font-bold text-gray-900 mb-4">
+        Send Us a Message
+      </h2>
+
+      <p class="text-gray-600 mb-8">
+        Fill out the form below and we'll get back to you shortly
+      </p>
+
+      <form class="space-y-5">
+
+        <input type="text" placeholder="Your name" class="input-style">
+
+        <input type="email" placeholder="your.email@example.com" class="input-style">
+
+        <input type="tel" placeholder="+1 (555) 123-4567" class="input-style">
+
+        <textarea rows="5" placeholder="Tell us about your project..." class="input-style"></textarea>
+
+        <button type="submit" class="submit-btn">
+          Send Message →
+        </button>
+
+      </form>
+
+    </div>
+
+    <!-- ================= RIGHT: INFO ================= -->
+    <div class="space-y-10 animate-fadeUp delay-200">
+
+      <!-- CONTACT INFO -->
+      <div class="info-card">
+        <h3>Contact Information</h3>
+        <p>Reach out to us through any of these channels</p>
+
+        <div class="space-y-5 mt-6">
+
+          <div class="info-item">
+            <span>📧</span>
+            <div>
+              <p>contact@wawatech.com</p>
+              <p>support@wawatech.com</p>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <span>📞</span>
+            <div>
+              <p>+1 (555) 123-4567</p>
+              <p>+1 (555) 987-6543</p>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <span>📍</span>
+            <div>
+              <p>123 Tech Boulevard</p>
+              <p>Innovation District</p>
+              <p>San Francisco, CA</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- BUSINESS HOURS -->
+      <div class="info-card">
+        <h3>Business Hours</h3>
+
+        <div class="space-y-2 mt-4">
+          <p><strong>Mon - Fri:</strong> 9:00 AM - 6:00 PM</p>
+          <p><strong>Saturday:</strong> 10:00 AM - 4:00 PM</p>
+          <p><strong>Sunday:</strong> Closed</p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+  
+<!-- FOOTER -->
+<footer class="bg-gradient-to-r from-black via-blue-950 to-black text-white py-20">
+
+  <div class="max-w-6xl mx-auto px-6">
+
+    <!-- GRID -->
+    <div class="grid md:grid-cols-4 gap-12 items-start">
+
+      <!-- BRAND + CONTACT -->
+      <div class="flex flex-col">
+
+        <!-- LOGO + NAME INLINE -->
+        <div class="flex items-center gap-3">
+
+          <div class="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-blue-700 
+                      flex items-center justify-center text-white text-xl font-bold 
+                      shadow-lg shadow-blue-500/30 animate-pulse 
+                      hover:scale-110 transition duration-300">
+            W
+          </div>
+
+          <h2 class="text-xl font-bold tracking-wide">
+            WAWA TECH HUB
+          </h2>
+
+        </div>
+
+        <!-- TAGLINE -->
+        <p class="text-gray-300 text-sm leading-relaxed mt-4 mb-5">
+          Empowering Innovation, Enabling Growth through cutting-edge technology solutions.
+        </p>
+
+        <!-- CONTACT -->
+        <div class="text-gray-300 text-sm space-y-2">
+          <p>📧 contact@wawatech.com</p>
+          <p>📞 +1 (555) 123-4567</p>
+          <p>📍 San Francisco, CA</p>
+        </div>
+
+      </div>
+
+      <!-- QUICK LINKS -->
+      <div>
+
+        <h3 class="text-lg font-semibold mb-4">
+          Quick Links
+        </h3>
+
+        <ul class="space-y-3 text-gray-300 text-sm">
+          <a href="index.html"><li class="hover:text-blue-400 hover:translate-x-1 transition">Home</li></a>
+          <a href="about.html"><li class="hover:text-blue-400 hover:translate-x-1 transition">About Us</li></a>
+          <a href="services.html"><li class="hover:text-blue-400 hover:translate-x-1 transition">Services</li></a>
+          <a href="why.html"><li class="hover:text-blue-400 hover:translate-x-1 transition">Why Us</li></a>
+          <a href="contact.html"><li class="hover:text-blue-400 hover:translate-x-1 transition">Contact</li></a>
+        </ul>
+
+      </div>
+
+      <!-- SERVICES -->
+      <div>
+
+        <h3 class="text-lg font-semibold mb-4">
+          Our Services
+        </h3>
+
+        <ul class="space-y-3 text-gray-300 text-sm">
+          <li>Software Development</li>
+          <li>Hardware Procurement</li>
+          <li>Cloud Solutions</li>
+          <li>Mobile Development</li>
+          <li>IT Consulting</li>
+        </ul>
+
+      </div>
+
+      <!-- NEWSLETTER -->
+      <div>
+
+        <h3 class="text-lg font-semibold mb-4">
+          Newsletter
+        </h3>
+
+        <p class="text-gray-300 text-sm mb-5 leading-relaxed">
+          Stay updated with the latest innovations and insights from WawaTech Hub.
+        </p>
+
+        <form class="space-y-3">
+
+          <input type="email"
+            placeholder="Enter your email"
+            class="w-full px-4 py-3 rounded-lg text-black focus:outline-none">
+
+          <button type="submit"
+            class="w-full bg-blue-600 hover:bg-blue-700 transition py-3 rounded-lg font-semibold
+                   hover:scale-105 active:scale-95 duration-300">
+            Subscribe →
+          </button>
+
+        </form>
+
+      </div>
+
+    </div>
+
+    <!-- BOTTOM -->
+    <div class="mt-14 border-t border-gray-800 pt-6 text-center text-gray-400 text-sm">
+      © 2026 iCreabot. All rights reserved.
+    </div>
+
+  </div>
+
+</footer>
+
+
+</body>
+</html>

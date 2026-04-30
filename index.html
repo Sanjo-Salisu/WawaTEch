@@ -1,0 +1,1262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Animated Header Fixed</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    /* Brand animation */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(-10px);
+      animation: fadeIn 0.6s forwards;
+    }
+
+    @keyframes fadeIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Desktop nav animation (smooth + immediate) */
+    .nav-anim {
+      opacity: 0;
+      transform: translateY(-8px);
+      animation: navFade 0.5s forwards;
+    }
+
+    .nav-anim:nth-child(1) { animation-delay: 0.05s; }
+    .nav-anim:nth-child(2) { animation-delay: 0.1s; }
+    .nav-anim:nth-child(3) { animation-delay: 0.15s; }
+    .nav-anim:nth-child(4) { animation-delay: 0.2s; }
+    .nav-anim:nth-child(5) { animation-delay: 0.25s; }
+
+    @keyframes navFade {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Hover underline */
+    .nav-link {
+      position: relative;
+    }
+
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      width: 0%;
+      height: 2px;
+      background: #2563eb;
+      transition: 0.3s;
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+    }
+
+    /* ===== LOGO ===== */
+.about-logo {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-shadow: 0 0 20px rgba(37, 99, 235, 0.6);
+  animation: pulseGlow 2.5s infinite ease-in-out;
+  transition: all 0.3s ease;
+}
+
+.logo-text {
+  color: white;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(37, 99, 235, 0.6);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(37, 99, 235, 1);
+    transform: scale(1.08);
+  }
+}
+
+.about-logo:hover {
+  transform: rotate(8deg) scale(1.15);
+  box-shadow: 0 0 40px rgba(37, 99, 235, 1);
+}
+
+/* ===== ICONS ===== */
+.icon-glow {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: #2563eb;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+
+  box-shadow: 0 0 15px rgba(37, 99, 235, 0.6);
+  animation: float 3s ease-in-out infinite;
+  transition: all 0.3s ease;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+.group:hover .icon-glow {
+  transform: scale(1.15);
+  box-shadow: 0 0 25px rgba(37, 99, 235, 0.9);
+  background: #1d4ed8;
+}
+
+.group:hover {
+  transform: translateY(-5px);
+}
+
+/* VIEW CARD */
+.view-card {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.35s ease;
+}
+
+/* HOVER EFFECT */
+.view-card:hover {
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  color: white;
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 15px 35px rgba(37, 99, 235, 0.4);
+}
+
+/* TEXT COLOR CHANGE */
+.view-card:hover div {
+  color: white;
+}
+
+/* ARROW MOVE */
+.view-card:hover .arrow {
+  transform: translateX(10px);
+}
+
+/* GLOW WAVE EFFECT */
+.view-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(255,255,255,0.4), transparent);
+  transition: all 0.6s ease;
+}
+
+.view-card:hover::before {
+  left: 100%;
+}
+
+/* WHY CARD BASE */
+.why-card {
+  transition: all 0.3s ease;
+}
+
+/* HOVER EFFECT */
+.why-card:hover {
+  transform: translateY(-6px);
+  background: white;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+  border-color: #2563eb;
+}
+
+/* ICON STYLE */
+.why-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: #2563eb;
+  color: white;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 24px;
+  margin-bottom: 12px;
+
+  box-shadow: 0 0 15px rgba(37, 99, 235, 0.4);
+
+  animation: floatIcon 3s ease-in-out infinite;
+  transition: all 0.3s ease;
+}
+
+/* FLOAT */
+@keyframes floatIcon {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+/* HOVER ICON EFFECT */
+.why-card:hover .why-icon {
+  transform: scale(1.15);
+  box-shadow: 0 0 25px rgba(37, 99, 235, 0.8);
+  background: #1d4ed8;
+}
+/* CTA CARD */
+.cta-card {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s ease;
+}
+
+/* SOFT GLOW BACKGROUND EFFECT */
+.cta-card::before {
+  content: "";
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  top: -50%;
+  left: -50%;
+  background: radial-gradient(circle, rgba(37,99,235,0.15), transparent 60%);
+  animation: slowPulse 6s infinite linear;
+}
+
+/* My Services */
+
+/* SAFE STACKING (IMPORTANT FIX) */
+#serviceTrack {
+  position: relative;
+  z-index: 1;
+  padding-top: 10px; /* pushes hover space DOWN safely */
+}
+
+/* SECTION TITLE SAFE LAYER */
+h2 {
+  position: relative;
+  z-index: 20;
+}
+
+/* CARD */
+.service-card {
+  min-width: 300px;
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 18px;
+  padding: 24px;
+
+  flex-shrink: 0;
+
+  transition: all 0.35s ease;
+  cursor: pointer;
+
+  position: relative;
+  z-index: 1;
+}
+
+/* ICON */
+.service-card .icon {
+  font-size: 34px;
+  margin-bottom: 12px;
+  transition: transform 0.3s ease;
+}
+
+/* TEXT */
+.service-card h3 {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.service-card p {
+  font-size: 14px;
+  color: #6b7280;
+  margin-bottom: 12px;
+}
+
+.service-card ul {
+  font-size: 14px;
+  color: #9ca3af;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* 🔥 HOVER (SAFE + ABOVE LAYER) */
+.service-card:hover {
+  transform: scale(1.05);
+  background: #f0f7ff;
+  border-color: #60a5fa;
+
+  box-shadow: 0 25px 50px rgba(59,130,246,0.25);
+
+  z-index: 50; /* FIX: keeps it ABOVE everything else */
+}
+
+/* ICON ANIMATION */
+.service-card:hover .icon {
+  transform: scale(1.2) rotate(5deg);
+}
+
+/* =========================
+   VIEW MORE (COLORFUL UPGRADE)
+========================= */
+
+.view-card {
+  min-width: 240px;
+  border-radius: 18px;
+
+  background: linear-gradient(135deg, #2563eb, #7c3aed, #06b6d4);
+  background-size: 200% 200%;
+
+  color: white;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+  flex-shrink: 0;
+
+  position: relative;
+  overflow: hidden;
+
+  transition: all 0.4s ease;
+
+  animation: gradientMove 6s ease infinite;
+}
+
+/* animated gradient */
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* content */
+.vm-content {
+  display: flex;
+  gap: 8px;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+/* arrow */
+.arrow {
+  transition: transform 0.3s ease;
+}
+
+/* hover */
+.view-card:hover {
+  transform: translateY(-6px) scale(1.05);
+  box-shadow: 0 25px 50px rgba(124,58,237,0.35);
+}
+
+.view-card:hover .arrow {
+  transform: translateX(6px);
+}
+
+/* LIGHT SWEEP */
+.view-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 120%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(255,255,255,0.25), transparent);
+  transition: 0.5s;
+}
+
+.view-card:hover::before {
+  left: 120%;
+}
+
+/* HIDE SCROLLBAR */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* PULSE ANIMATION */
+@keyframes slowPulse {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* HOVER LIFT */
+.cta-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+/* BUTTON */
+.cta-btn {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+/* BUTTON HOVER */
+.cta-btn:hover {
+  background: #1d4ed8;
+  transform: scale(1.05);
+  box-shadow: 0 10px 25px rgba(37,99,235,0.4);
+}
+
+/* ARROW ANIMATION */
+.cta-btn .arrow {
+  transition: transform 0.3s ease;
+}
+
+.cta-btn:hover .arrow {
+  transform: translateX(5px);
+}
+
+/* ===== GENERAL COLUMN BEHAVIOR ===== */
+.footer-col {
+  transition: all 0.3s ease;
+}
+
+.footer-col:hover {
+  transform: translateY(-4px);
+}
+
+/* ===== BRAND TITLE (ANIMATED WAWA) ===== */
+.brand-title {
+  font-size: 26px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  margin-bottom: 12px;
+
+  background: linear-gradient(90deg, #ffffff, #60a5fa, #ffffff);
+  background-size: 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  animation: shineText 4s linear infinite;
+}
+
+/* subtle glowing movement */
+@keyframes shineText {
+  0% { background-position: 0%; }
+  100% { background-position: 200%; }
+}
+
+/* =========================
+   GENERAL FOOTER BEHAVIOR
+========================= */
+
+footer {
+  font-family: inherit;
+}
+
+/* Column hover lift */
+.footer-col {
+  transition: all 0.3s ease;
+}
+
+.footer-col:hover {
+  transform: translateY(-4px);
+}
+
+/* =========================
+   BRAND LOGO (W BADGE)
+========================= */
+
+.brand-logo {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 26px;
+  font-weight: 800;
+  color: white;
+
+  box-shadow: 0 0 18px rgba(37, 99, 235, 0.6);
+
+  animation: logoPulse 2.8s ease-in-out infinite;
+  transition: all 0.3s ease;
+}
+
+/* Pulse animation */
+@keyframes logoPulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 18px rgba(37, 99, 235, 0.5);
+  }
+  50% {
+    transform: scale(1.08);
+    box-shadow: 0 0 30px rgba(37, 99, 235, 0.9);
+  }
+}
+
+/* Hover behavior */
+.brand-logo:hover {
+  transform: rotate(8deg) scale(1.15);
+  box-shadow: 0 0 40px rgba(37, 99, 235, 1);
+}
+
+/* Brand title */
+.footer-brand-title {
+  font-size: 20px;
+  font-weight: 700;
+  margin-top: 12px;
+}
+
+/* =========================
+   SECTION HEADERS
+========================= */
+
+.footer-title {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  letter-spacing: 0.5px;
+}
+
+/* =========================
+   TEXT / LINKS
+========================= */
+
+.footer-list {
+  font-size: 15px;
+  color: #cbd5e1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer-list li {
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.footer-list li:hover {
+  color: #60a5fa;
+  transform: translateX(5px);
+}
+
+/* =========================
+   NEWSLETTER BOX (PREMIUM)
+========================= */
+
+.newsletter-box {
+  padding: 20px;
+  border-radius: 16px;
+
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(12px);
+
+  border: 1px solid rgba(255, 255, 255, 0.1);
+
+  transition: all 0.3s ease;
+}
+
+.newsletter-box:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 15px 40px rgba(59, 130, 246, 0.25);
+}
+
+/* Input */
+.newsletter-input {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 10px;
+
+  border: none;
+  outline: none;
+
+  font-size: 14px;
+}
+
+/* Button */
+.newsletter-btn {
+  width: 100%;
+  padding: 12px 14px;
+
+  border-radius: 10px;
+
+  background: #2563eb;
+  color: white;
+
+  font-weight: 600;
+
+  position: relative;
+  overflow: hidden;
+
+  transition: all 0.3s ease;
+}
+
+/* Hover */
+.newsletter-btn:hover {
+  background: #1d4ed8;
+  transform: scale(1.03);
+  box-shadow: 0 10px 25px rgba(37, 99, 235, 0.4);
+}
+
+/* Light sweep effect */
+.newsletter-btn::before {
+  content: "";
+  position: absolute;
+
+  top: 0;
+  left: -120%;
+
+  width: 120%;
+  height: 100%;
+
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
+
+  transition: 0.5s;
+}
+
+.newsletter-btn:hover::before {
+  left: 120%;
+}
+
+/* =========================
+   FOOTER LINKS BEHAVIOR
+========================= */
+
+.footer-list li {
+  transition: all 0.2s ease;
+}
+
+.footer-list li:hover {
+  transform: translateX(6px);
+  color: #60a5fa;
+}
+
+/* =========================
+   MOBILE IMPROVEMENT
+========================= */
+
+@media (max-width: 768px) {
+  .footer-col {
+    text-align: left;
+  }
+
+  .newsletter-box {
+    margin-top: 10px;
+  }
+}
+  </style>
+</head>
+
+<body class="bg-white">
+    
+<header class="fixed top-0 left-0 w-full bg-white/80 backdrop-blur-md z-50 border-b border-gray-100">
+
+  <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+
+    <!-- BRAND -->
+    <div class="flex items-center space-x-3 fade-in">
+
+      <div class="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center text-white font-bold">
+        W
+      </div>
+
+      <div class="flex flex-col leading-tight">
+        <span class="text-blue-600 font-bold text-lg">wawa</span>
+        <span class="text-gray-500 text-xs">tech hub</span>
+      </div>
+
+    </div>
+
+    <!-- DESKTOP NAV -->
+    <nav class="hidden md:flex space-x-8 text-gray-700 font-medium">
+
+      <a href="index.html" class="nav-link nav-anim">Home</a>
+      <a href="about.html" class="nav-link nav-anim">About Us</a>
+      <a href="services.html" class="nav-link nav-anim">Services</a>
+      <a href="why.html" class="nav-link nav-anim">Why Us</a>
+      <a href="contact.html" class="nav-link nav-anim">Contact</a>
+
+    </nav>
+
+    <!-- MOBILE BUTTON -->
+    <button id="menuBtn" class="md:hidden text-blue-600 font-bold text-lg">
+      ☰
+    </button>
+
+  </div>
+
+  <!-- MOBILE MENU -->
+  <div id="mobileMenu"
+    class="md:hidden max-h-0 overflow-hidden transition-all duration-300 border-t border-gray-100">
+
+    <div class="flex flex-col px-6 py-4 space-y-4 text-gray-700 font-medium">
+
+      <a href="index.html">Home</a>
+      <a href="about.html">About Us</a>
+      <a href="services.html">Services</a>
+      <a href="why.html">Why Us</a>
+      <a href="contact.html">Contact</a>
+
+    </div>
+  </div>
+</header>
+
+  <!-- HERO SLIDER -->
+<section class="relative w-full h-screen overflow-hidden">
+
+  <!-- SLIDES WRAPPER -->
+  <div id="slider" class="flex w-[300%] h-full transition-transform duration-1000 ease-in-out">
+
+    <!-- SLIDE 1 -->
+<div class="w-full h-full relative">
+
+  <video autoplay muted loop playsinline
+    class="w-full h-full object-cover">
+    <source src="images/2.mp4" type="video/mp4">
+  </video>
+
+  <div class="absolute inset-0 bg-black/50 flex items-center justify-center text-center px-6">
+    <div class="text-white max-w-2xl">
+
+      <h1 class="text-3xl md:text-5xl font-bold mb-4">
+        Welcome to WawaTech Hub
+      </h1>
+
+      <p class="text-lg md:text-xl mb-4">
+        Empowering Innovation, Enabling Growth
+      </p>
+
+      <p class="text-sm md:text-lg mb-8 text-gray-200">
+        Your premier destination for cutting-edge software development and reliable hardware procurement solutions
+      </p>
+
+      <!-- BUTTONS -->
+      <div class="flex justify-center gap-4 flex-wrap">
+
+        <!-- Get Started -->
+        <button class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition">
+          <a href="contact.html">Get Started</a>
+        </button>
+
+        <!-- Learn More -->
+        <button
+             class="border border-white text-white px-6 py-3 rounded-lg font-medium transition duration-300 hover:bg-blue-600 hover:border-blue-600 hover:text-white">
+           <a href="about.html">Learn More</a>
+        </button>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+ <!-- SLIDE 2 -->
+<div class="w-full h-full relative">
+
+  <video autoplay muted loop playsinline
+    class="w-full h-full object-cover">
+    <source src="images/3.mp4" type="video/mp4">
+  </video>
+
+  <div class="absolute inset-0 bg-black/50 flex items-center justify-center text-center px-6">
+    <div class="text-white max-w-2xl">
+
+      <h1 class="text-3xl md:text-5xl font-bold mb-4">
+        Software Development
+      </h1>
+
+      <p class="text-lg md:text-xl mb-4">
+        Custom solutions tailored to your business needs
+      </p>
+
+      <p class="text-sm md:text-lg mb-8 text-gray-200">
+        We specialize in creating innovative software solutions that drive business growth and efficiency.
+      </p>
+
+      <!-- BUTTONS -->
+      <div class="flex justify-center gap-4 flex-wrap">
+
+        <!-- Get Started -->
+        <button class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition">
+          <a href="contact.html">Get Started</a>
+        </button>
+
+        <!-- Learn More -->
+        <button
+          class="border border-white text-white px-6 py-3 rounded-lg font-medium transition duration-300 hover:bg-blue-600 hover:border-blue-600 hover:text-white">
+          <a href="about.html">Learn More</a>
+        </button>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- SLIDE 3 -->
+<div class="w-full h-full relative">
+
+  <video autoplay muted loop playsinline
+    class="w-full h-full object-cover">
+    <source src="images/n.mp4" type="video/mp4">
+  </video>
+
+  <div class="absolute inset-0 bg-black/50 flex items-center justify-center text-center px-6">
+    <div class="text-white max-w-2xl">
+
+      <h1 class="text-3xl md:text-5xl font-bold mb-4">
+        Hardware Procurement
+      </h1>
+
+      <p class="text-lg md:text-xl mb-4">
+        Quality hardware solutions for your technology needs
+      </p>
+
+      <p class="text-sm md:text-lg mb-8 text-gray-200">
+        Access to premium hardware components and equipment from trusted manufacturers worldwide.
+      </p>
+
+      <!-- BUTTONS -->
+      <div class="flex justify-center gap-4 flex-wrap">
+
+        <!-- Get Started -->
+        <button class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition">
+          <a href="contact.html">Get Started</a>
+        </button>
+
+        <!-- Learn More -->
+        <button
+          class="border border-white text-white px-6 py-3 rounded-lg font-medium transition duration-300 hover:bg-blue-600 hover:border-blue-600 hover:text-white">
+          <a href="about.html">Learn More</a>
+        </button>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+</section>
+
+
+<!-- ABOUT US -->
+<section class="py-20 bg-white">
+
+  <div class="max-w-5xl mx-auto px-6 text-center">
+
+    <!-- ANIMATED LOGO -->
+    <div class="about-logo mx-auto mb-6">
+      <span class="logo-text">W</span>
+    </div>
+
+    <!-- TITLE -->
+    <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-12">
+      About Us
+    </h2>
+
+    <!-- CONTENT -->
+    <div class="grid md:grid-cols-2 gap-8">
+
+      <!-- MISSION -->
+      <div class="group bg-gray-50 p-8 rounded-xl border border-gray-100 shadow-sm hover:shadow-lg transition duration-300">
+
+        <!-- ICON -->
+        <div class="icon-glow mx-auto mb-4">
+          🚀
+        </div>
+
+        <h3 class="text-xl font-semibold text-blue-600 mb-3">
+          Our Mission
+        </h3>
+
+        <p class="text-gray-600 leading-relaxed">
+          To deliver exceptional technology solutions that drive business success.
+          We strive to be the trusted partner for organizations seeking to leverage
+          technology for growth, efficiency, and competitive advantage.
+        </p>
+
+      </div>
+
+      <!-- VISION -->
+      <div class="group bg-gray-50 p-8 rounded-xl border border-gray-100 shadow-sm hover:shadow-lg transition duration-300">
+
+        <!-- ICON -->
+        <div class="icon-glow mx-auto mb-4">
+          👁️
+        </div>
+
+        <h3 class="text-xl font-semibold text-blue-600 mb-3">
+          Our Vision
+        </h3>
+
+        <p class="text-gray-600 leading-relaxed">
+          To be the leading technology solutions provider, recognized for innovation,
+          quality, and customer satisfaction. We envision a future where technology
+          seamlessly integrates with business operations to create unprecedented value.
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+<section class="py-20 bg-gray-50 overflow-hidden">
+
+  <div class="max-w-6xl mx-auto px-6">
+
+    <h2 class="text-4xl font-bold text-center text-gray-800 mb-16 relative z-20">
+      Our Services
+    </h2>
+
+    <!-- SAFE SCROLL AREA -->
+    <div class="relative z-10 pt-6">
+
+      <div id="serviceTrack"
+        class="flex gap-6 overflow-x-auto scroll-smooth no-scrollbar pb-8">
+
+        <!-- CARD -->
+        <div class="service-card">
+          <div class="icon">🌐</div>
+          <h3>Web Development</h3>
+          <p>Responsive and scalable web applications</p>
+          <ul>
+            <li>Custom Web Apps</li>
+            <li>E-commerce Platforms</li>
+            <li>CMS Solutions</li>
+            <li>PWA Development</li>
+          </ul>
+        </div>
+
+        <div class="service-card">
+          <div class="icon">📱</div>
+          <h3>Mobile Development</h3>
+          <p>Native and cross-platform mobile apps</p>
+          <ul>
+            <li>iOS Apps</li>
+            <li>Android Apps</li>
+            <li>React Native</li>
+            <li>Flutter</li>
+          </ul>
+        </div>
+
+        <div class="service-card">
+          <div class="icon">🧠</div>
+          <h3>Custom Software</h3>
+          <p>Tailored business solutions</p>
+          <ul>
+            <li>Enterprise Systems</li>
+            <li>Automation</li>
+            <li>Integration</li>
+            <li>Modernization</li>
+          </ul>
+        </div>
+
+        <div class="service-card">
+          <div class="icon">☁️</div>
+          <h3>Cloud Solutions</h3>
+          <p>Scalable infrastructure services</p>
+          <ul>
+            <li>AWS / Azure / GCP</li>
+            <li>DevOps</li>
+            <li>Architecture</li>
+            <li>Migration</li>
+          </ul>
+        </div>
+
+        <div class="service-card">
+          <div class="icon">🖥️</div>
+          <h3>Server Infrastructure</h3>
+          <p>Enterprise-grade systems</p>
+          <ul>
+            <li>Rack Servers</li>
+            <li>Storage</li>
+            <li>Networking</li>
+          </ul>
+        </div>
+
+        <!-- VIEW MORE (UPGRADED) -->
+        <div id="viewMore" class="view-card">
+          <div class="vm-content">
+            <a href="services.html"><span>View More</span></a>
+            <span class="arrow">→</span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+<!-- WHY US -->
+<section class="py-20 bg-white">
+
+  <div class="max-w-6xl mx-auto px-6">
+
+    <h2 class="text-3xl font-bold text-center text-gray-800 mb-12">
+      Why Choose Us
+    </h2>
+
+    <!-- GRID -->
+    <div class="grid md:grid-cols-3 gap-6">
+
+      <!-- CARD 1 -->
+      <div class="why-card bg-gray-50 border border-gray-200 rounded-xl p-6 transition">
+        <div class="why-icon">🏆</div>
+        <h3 class="font-bold text-lg mb-2">Proven Track Record</h3>
+        <p class="text-sm text-gray-600">
+          Years of successful project deliveries across various industries. Our portfolio speaks for itself with satisfied clients and impactful solutions.
+        </p>
+      </div>
+
+      <!-- CARD 2 -->
+      <div class="why-card bg-gray-50 border border-gray-200 rounded-xl p-6 transition">
+        <div class="why-icon">⏱️</div>
+        <h3 class="font-bold text-lg mb-2">Timely Delivery</h3>
+        <p class="text-sm text-gray-600">
+          We understand the value of your time. Our agile methodology ensures projects are delivered on schedule without compromising quality.
+        </p>
+      </div>
+
+      <!-- CARD 3 -->
+      <div class="why-card bg-gray-50 border border-gray-200 rounded-xl p-6 transition">
+        <div class="why-icon">✔️</div>
+        <h3 class="font-bold text-lg mb-2">Quality Assurance</h3>
+        <p class="text-sm text-gray-600">
+          Rigorous testing and quality control processes ensure every deliverable meets the highest standards of excellence.
+        </p>
+      </div>
+
+      <!-- CARD 4 -->
+      <div class="why-card bg-gray-50 border border-gray-200 rounded-xl p-6 transition">
+        <div class="why-icon">📈</div>
+        <h3 class="font-bold text-lg mb-2">Scalable Solutions</h3>
+        <p class="text-sm text-gray-600">
+          Our solutions grow with your business. We build with scalability in mind to support your future expansion needs.
+        </p>
+      </div>
+
+      <!-- CARD 5 -->
+      <div class="why-card bg-gray-50 border border-gray-200 rounded-xl p-6 transition">
+        <div class="why-icon">🧠</div>
+        <h3 class="font-bold text-lg mb-2">Expert Team</h3>
+        <p class="text-sm text-gray-600">
+          Our team consists of certified professionals with deep expertise in cutting-edge technologies and industry best practices.
+        </p>
+      </div>
+
+      <!-- CARD 6 -->
+      <div class="why-card bg-gray-50 border border-gray-200 rounded-xl p-6 transition">
+        <div class="why-icon">🛟</div>
+        <h3 class="font-bold text-lg mb-2">24/7 Support</h3>
+        <p class="text-sm text-gray-600">
+          Round-the-clock support ensures your operations run smoothly. We're always here when you need us.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- CTA SECTION -->
+<section class="py-20 bg-gray-50">
+
+  <div class="max-w-4xl mx-auto px-6 text-center">
+
+    <!-- CARD -->
+    <div class="cta-card bg-white border border-gray-200 rounded-2xl p-10 shadow-sm transition">
+
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+        Ready to Transform Your Business?
+      </h2>
+
+      <p class="text-gray-600 text-lg mb-8">
+        Let's discuss how we can help you achieve your technology goals
+      </p>
+
+      <!-- BUTTON -->
+      <a href="contact.html"
+         class="cta-btn inline-flex items-center gap-2 bg-blue-600 text-white px-6 py-3 rounded-lg font-medium transition">
+        Contact Us Today
+        <span class="arrow">→</span>
+      </a>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-gradient-to-r from-black via-blue-950 to-black text-white py-20">
+
+  <div class="max-w-6xl mx-auto px-6">
+
+    <!-- GRID -->
+    <div class="grid md:grid-cols-4 gap-12 items-start">
+
+      <!-- BRAND + CONTACT -->
+      <div class="flex flex-col">
+
+        <!-- LOGO + NAME INLINE -->
+        <div class="flex items-center gap-3">
+
+          <div class="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-blue-700 
+                      flex items-center justify-center text-white text-xl font-bold 
+                      shadow-lg shadow-blue-500/30 animate-pulse 
+                      hover:scale-110 transition duration-300">
+            W
+          </div>
+
+          <h2 class="text-xl font-bold tracking-wide">
+            WAWA TECH HUB
+          </h2>
+
+        </div>
+
+        <!-- TAGLINE -->
+        <p class="text-gray-300 text-sm leading-relaxed mt-4 mb-5">
+          Empowering Innovation, Enabling Growth through cutting-edge technology solutions.
+        </p>
+
+        <!-- CONTACT -->
+        <div class="text-gray-300 text-sm space-y-2">
+          <p>📧 contact@wawatech.com</p>
+          <p>📞 +1 (555) 123-4567</p>
+          <p>📍 San Francisco, CA</p>
+        </div>
+
+      </div>
+
+      <!-- QUICK LINKS -->
+      <div>
+
+        <h3 class="text-lg font-semibold mb-4">
+          Quick Links
+        </h3>
+
+        <ul class="space-y-3 text-gray-300 text-sm">
+          <a href="index.html"><li class="hover:text-blue-400 hover:translate-x-1 transition">Home</li></a>
+          <a href="about.html"><li class="hover:text-blue-400 hover:translate-x-1 transition">About Us</li></a>
+          <a href="services.html"><li class="hover:text-blue-400 hover:translate-x-1 transition">Services</li></a>
+          <a href="why.html"><li class="hover:text-blue-400 hover:translate-x-1 transition">Why Us</li></a>
+          <a href="contact.html"><li class="hover:text-blue-400 hover:translate-x-1 transition">Contact</li></a>
+        </ul>
+
+      </div>
+
+      <!-- SERVICES -->
+      <div>
+
+        <h3 class="text-lg font-semibold mb-4">
+          Our Services
+        </h3>
+
+        <ul class="space-y-3 text-gray-300 text-sm">
+          <li>Software Development</li>
+          <li>Hardware Procurement</li>
+          <li>Cloud Solutions</li>
+          <li>Mobile Development</li>
+          <li>IT Consulting</li>
+        </ul>
+
+      </div>
+
+      <!-- NEWSLETTER -->
+      <div>
+
+        <h3 class="text-lg font-semibold mb-4">
+          Newsletter
+        </h3>
+
+        <p class="text-gray-300 text-sm mb-5 leading-relaxed">
+          Stay updated with the latest innovations and insights from WawaTech Hub.
+        </p>
+
+        <form class="space-y-3">
+
+          <input type="email"
+            placeholder="Enter your email"
+            class="w-full px-4 py-3 rounded-lg text-black focus:outline-none">
+
+          <button type="submit"
+            class="w-full bg-blue-600 hover:bg-blue-700 transition py-3 rounded-lg font-semibold
+                   hover:scale-105 active:scale-95 duration-300">
+            Subscribe →
+          </button>
+
+        </form>
+
+      </div>
+
+    </div>
+
+    <!-- BOTTOM -->
+    <div class="mt-14 border-t border-gray-800 pt-6 text-center text-gray-400 text-sm">
+      © 2026 iCreabot. All rights reserved.
+    </div>
+
+  </div>
+
+</footer>
+
+<!-- SLIDER SCRIPT -->
+<script>
+  const slider = document.getElementById("slider");
+  let index = 0;
+
+  setInterval(() => {
+    index = (index + 1) % 3;
+    slider.style.transform = `translateX(-${index * 100}vw)`;
+  }, 5000); // change every 5 seconds
+</script>
+
+
+
+<script>
+  const btn = document.getElementById("menuBtn");
+  const menu = document.getElementById("mobileMenu");
+
+  let open = false;
+
+  btn.addEventListener("click", () => {
+    open = !open;
+
+    if (open) {
+      menu.style.maxHeight = "300px";
+    } else {
+      menu.style.maxHeight = "0px";
+    }
+  });
+</script>
+
+</body>
+</html>

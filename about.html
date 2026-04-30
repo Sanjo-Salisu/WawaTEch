@@ -1,0 +1,666 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>About - WawaTech Hub</title>
+
+  <!-- ABOUT ANIMATION -->
+  <style>
+   /* Desktop nav animation (smooth + immediate) */
+    .nav-anim {
+      opacity: 0;
+      transform: translateY(-8px);
+      animation: navFade 0.5s forwards;
+    }
+
+    .nav-anim:nth-child(1) { animation-delay: 0.05s; }
+    .nav-anim:nth-child(2) { animation-delay: 0.1s; }
+    .nav-anim:nth-child(3) { animation-delay: 0.15s; }
+    .nav-anim:nth-child(4) { animation-delay: 0.2s; }
+    .nav-anim:nth-child(5) { animation-delay: 0.25s; }
+
+    @keyframes navFade {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    
+    /* Hover underline */
+    .nav-link {
+      position: relative;
+    }
+
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      width: 0%;
+      height: 2px;
+      background: #2563eb;
+      transition: 0.3s;
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+    }
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeUp {
+  animation: fadeUp 1s ease forwards;
+}
+
+.delay-200 {
+  animation-delay: 0.2s;
+}
+
+#techCanvas {
+  z-index: 0;
+}
+
+
+
+/* Vision and mission fade up animation */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(35px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeUp {
+  animation: fadeUp 1s ease forwards;
+}
+
+.delay-200 {
+  animation-delay: 0.2s;
+}
+
+/* floating icon animation */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* card styling (keep clean + premium) */
+.glass-card {
+  background: rgba(255,255,255,0.8);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: 16px;
+  padding: 28px;
+  transition: all 0.3s ease;
+}
+
+.glass-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 50px rgba(59,130,246,0.15);
+}
+
+
+/* SECTION ANIMATION */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeUp {
+  animation: fadeUp 0.9s ease forwards;
+}
+
+.delay-200 {
+  animation-delay: 0.2s;
+}
+
+.delay-400 {
+  animation-delay: 0.4s;
+}
+
+/* CARD DESIGN */
+.value-card {
+  background: white;
+  border-radius: 18px;
+  padding: 30px;
+
+  border: 1px solid rgba(0,0,0,0.08);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+
+  transition: all 0.35s ease;
+  text-align: center;
+}
+
+/* ICON */
+.value-card .icon {
+  font-size: 42px;
+  margin-bottom: 12px;
+
+  transition: transform 0.3s ease;
+}
+
+/* TITLE */
+.value-card h3 {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #111827;
+}
+
+/* TEXT */
+.value-card p {
+  font-size: 14px;
+  color: #6b7280;
+  line-height: 1.6;
+}
+
+/* 🔥 HOVER EFFECT */
+.value-card:hover {
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: 0 25px 60px rgba(59,130,246,0.18);
+  border-color: rgba(59,130,246,0.3);
+}
+
+/* ICON ANIMATION ON HOVER */
+.value-card:hover .icon {
+  transform: scale(1.2) rotate(5deg);
+}
+
+
+
+/* SCROLL TRACK */
+.scroll-track {
+  display: flex;
+  gap: 24px;
+  width: max-content;
+  animation: scrollLoop 25s linear infinite;
+}
+
+/* TRUE LOOP ANIMATION (NO JUMP) */
+@keyframes scrollLoop {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* SQUARE CARD */
+.why-card {
+  width: 260px;
+  height: 260px;
+
+  flex-shrink: 0;
+
+  background: white;
+  border-radius: 18px;
+  padding: 20px;
+
+  border: 1px solid rgba(0,0,0,0.08);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.05);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+
+  transition: all 0.3s ease;
+}
+
+/* ICON */
+.why-card .icon {
+  font-size: 34px;
+  margin-bottom: 10px;
+}
+
+/* HOVER */
+.why-card:hover {
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: 0 25px 60px rgba(59,130,246,0.18);
+  border-color: rgba(59,130,246,0.3);
+}
+  </style>
+</head>
+
+<body class="bg-white">
+
+<!-- ================= HEADER ================= -->
+<header class="bg-white shadow-md sticky top-0 z-50">
+
+  <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+
+    <!-- BRAND -->
+    <div class="flex items-center space-x-3">
+      <div class="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center text-white font-bold">
+        W
+      </div>
+
+      <div class="flex flex-col leading-tight">
+        <span class="text-blue-600 font-bold text-lg">wawa</span>
+        <span class="text-gray-500 text-xs">tech hub</span>
+      </div>
+    </div>
+
+    <!-- DESKTOP NAV -->
+    <nav class="hidden md:flex gap-8 text-gray-700 font-medium">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="about.html" class="nav-link">About Us</a>
+      <a href="services.html" class="nav-link">Services</a>
+      <a href="why.html" class="nav-link">Why Us</a>
+      <a href="contact.html" class="nav-link">Contact</a>
+    </nav>
+
+    <!-- MOBILE BUTTON (FIXED POSITION) -->
+    <button id="menuBtn" class="md:hidden text-blue-600 text-2xl">
+      ☰
+    </button>
+
+  </div>
+
+  <!-- MOBILE MENU -->
+  <div id="mobileMenu"
+       class="md:hidden max-h-0 overflow-hidden transition-all duration-500 ease-in-out bg-white border-t border-gray-100 shadow-sm">
+
+    <div class="flex flex-col px-6 py-4 space-y-3 text-gray-700 font-medium">
+
+      <a href="index.html" class="mobile-link">Home</a>
+      <a href="about.html" class="mobile-link">About Us</a>
+      <a href="services.html" class="mobile-link">Services</a>
+      <a href="why.html" class="mobile-link">Why Us</a>
+      <a href="contact.html" class="mobile-link">Contact</a>
+
+    </div>
+  </div>
+
+</header>
+
+
+<section class="relative bg-white py-32 overflow-hidden">
+
+  <!-- CANVAS BACKGROUND -->
+  <canvas id="techCanvas" class="absolute inset-0 w-full h-full"></canvas>
+
+  <!-- CONTENT -->
+  <div class="relative max-w-4xl mx-auto px-6 text-center z-10">
+
+    <h1 class="text-4xl md:text-6xl font-bold text-gray-900 mb-6 animate-fadeUp">
+      About WawaTech Hub
+    </h1>
+
+    <p class="text-lg md:text-xl text-gray-600 leading-relaxed animate-fadeUp delay-200">
+      We are a technology solutions company dedicated to empowering businesses through innovative software development and reliable hardware procurement.
+    </p>
+
+  </div>
+
+</section>
+
+
+
+<!-- ================= MISSION & VISION ================= -->
+<section class="bg-white py-24 px-6">
+
+  <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-10">
+
+    <!-- MISSION -->
+    <div class="glass-card animate-fadeUp text-center">
+
+      <!-- animated icon -->
+      <div class="text-4xl mb-4 animate-float">🚀</div>
+
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">
+        Our Mission
+      </h2>
+
+      <p class="text-gray-600 leading-relaxed">
+        To deliver exceptional technology solutions that drive business success. We strive to be the trusted partner for organizations seeking to leverage technology for growth, efficiency, and competitive advantage.
+      </p>
+
+    </div>
+
+    <!-- VISION -->
+    <div class="glass-card animate-fadeUp delay-200 text-center">
+
+      <!-- animated icon -->
+      <div class="text-4xl mb-4 animate-float">🌐</div>
+
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">
+        Our Vision
+      </h2>
+
+      <p class="text-gray-600 leading-relaxed">
+        To be the leading technology solutions provider, recognized for innovation, quality, and customer satisfaction. We envision a future where technology seamlessly integrates with business operations to create unprecedented value.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- ================= CORE VALUES ================= -->
+<section class="bg-gray-50 py-24 px-6">
+
+  <div class="max-w-6xl mx-auto text-center">
+
+    <h2 class="text-3xl font-bold text-gray-900 mb-12 animate-fadeUp">
+      Our Core Values
+    </h2>
+
+    <!-- CARDS GRID -->
+    <div class="grid md:grid-cols-3 gap-8">
+
+      <!-- EXCELLENCE -->
+      <div class="value-card animate-fadeUp">
+        <div class="icon">🏆</div>
+        <h3>Excellence</h3>
+        <p>
+          We pursue excellence in every project, ensuring the highest quality standards in our software development and hardware solutions.
+        </p>
+      </div>
+
+      <!-- COLLABORATION -->
+      <div class="value-card animate-fadeUp delay-200">
+        <div class="icon">🤝</div>
+        <h3>Collaboration</h3>
+        <p>
+          We believe in strong partnerships with our clients, working together to understand needs and deliver tailored solutions.
+        </p>
+      </div>
+
+      <!-- INNOVATION -->
+      <div class="value-card animate-fadeUp delay-400">
+        <div class="icon">💡</div>
+        <h3>Innovation</h3>
+        <p>
+          We stay ahead of technology trends, continuously innovating to provide cutting-edge solutions that give our clients a competitive edge.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ================= WHY CHOOSE US ================= -->
+<section class="bg-white py-24 overflow-hidden">
+
+  <div class="max-w-6xl mx-auto px-6 text-center mb-12">
+    <h2 class="text-3xl font-bold text-gray-900">
+      Why Choose Us?
+    </h2>
+  </div>
+
+  <!-- TRACK -->
+  <div class="scroll-track">
+
+    <!-- SET 1 -->
+    <div class="why-card">
+      <div class="icon">🧠</div>
+      <h3>Expertise & Experience</h3>
+      <p>Skilled professionals with years of experience in software development and hardware procurement.</p>
+    </div>
+
+    <div class="why-card">
+      <div class="icon">⚙️</div>
+      <h3>Comprehensive Solutions</h3>
+      <p>End-to-end technology solutions from consultation to deployment and support.</p>
+    </div>
+
+    <div class="why-card">
+      <div class="icon">✅</div>
+      <h3>Quality Assurance</h3>
+      <p>Strict quality standards ensuring every deliverable exceeds expectations.</p>
+    </div>
+
+    <div class="why-card">
+      <div class="icon">🤝</div>
+      <h3>Customer-Centric Approach</h3>
+      <p>We build solutions tailored to your unique business needs.</p>
+    </div>
+
+    <!-- SET 2 (DUPLICATE FOR SMOOTH LOOP) -->
+    <div class="why-card">
+      <div class="icon">🧠</div>
+      <h3>Expertise & Experience</h3>
+      <p>Skilled professionals with years of experience in software development and hardware procurement.</p>
+    </div>
+
+    <div class="why-card">
+      <div class="icon">⚙️</div>
+      <h3>Comprehensive Solutions</h3>
+      <p>End-to-end technology solutions from consultation to deployment and support.</p>
+    </div>
+
+    <div class="why-card">
+      <div class="icon">✅</div>
+      <h3>Quality Assurance</h3>
+      <p>Strict quality standards ensuring every deliverable exceeds expectations.</p>
+    </div>
+
+    <div class="why-card">
+      <div class="icon">🤝</div>
+      <h3>Customer-Centric Approach</h3>
+      <p>We build solutions tailored to your unique business needs.</p>
+    </div>
+
+  </div>
+
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer class="bg-gradient-to-r from-black via-blue-950 to-black text-white py-20">
+
+  <div class="max-w-6xl mx-auto px-6">
+
+    <div class="grid md:grid-cols-4 gap-12 items-start">
+
+      <!-- BRAND -->
+      <div class="flex flex-col">
+
+        <div class="flex items-center gap-3">
+
+          <div class="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-blue-700 
+                      flex items-center justify-center text-white text-xl font-bold 
+                      shadow-lg shadow-blue-500/30 animate-pulse">
+            W
+          </div>
+
+          <h2 class="text-xl font-bold">
+            WAWA TECH HUB
+          </h2>
+
+        </div>
+
+        <p class="text-gray-300 text-sm mt-4 mb-5">
+          Empowering Innovation, Enabling Growth through cutting-edge technology solutions.
+        </p>
+
+        <div class="text-gray-300 text-sm space-y-2">
+          <p>📧 contact@wawatech.com</p>
+          <p>📞 +1 (555) 123-4567</p>
+          <p>📍 San Francisco, CA</p>
+        </div>
+
+      </div>
+
+      <!-- LINKS -->
+      <div>
+        <h3 class="text-lg font-semibold mb-4">Quick Links</h3>
+        <ul class="space-y-3 text-gray-300 text-sm">
+          <a href="index.html"><li class="hover:text-blue-400 transition">Home</li></a>
+          <a href="about.html"><li class="hover:text-blue-400 transition">About Us</li></a>
+          <a href="services.html"><li class="hover:text-blue-400 transition">Services</li></a>
+          <a href="why.html"><li class="hover:text-blue-400 transition">Why Us</li></a>
+          <a href="contact.html"><li class="hover:text-blue-400 transition">Contact</li></a>
+        </ul>
+      </div>
+
+      <!-- SERVICES -->
+      <div>
+        <h3 class="text-lg font-semibold mb-4">Our Services</h3>
+        <ul class="space-y-3 text-gray-300 text-sm">
+          <li>Software Development</li>
+          <li>Hardware Procurement</li>
+          <li>Cloud Solutions</li>
+          <li>Mobile Development</li>
+          <li>IT Consulting</li>
+        </ul>
+      </div>
+
+      <!-- NEWSLETTER -->
+      <div>
+        <h3 class="text-lg font-semibold mb-4">Newsletter</h3>
+
+        <p class="text-gray-300 text-sm mb-4">
+          Stay updated with WawaTech Hub.
+        </p>
+
+        <input type="email" placeholder="Enter email"
+          class="w-full px-4 py-3 rounded-lg text-black mb-3">
+
+        <button class="w-full bg-blue-600 hover:bg-blue-700 py-3 rounded-lg font-semibold transition">
+          Subscribe →
+        </button>
+
+      </div>
+
+    </div>
+
+    <div class="mt-14 border-t border-gray-800 pt-6 text-center text-gray-400 text-sm">
+      © 2026 iCreabot. All rights reserved.
+    </div>
+
+  </div>
+
+</footer>
+
+<script>
+const canvas = document.getElementById("techCanvas");
+const ctx = canvas.getContext("2d");
+
+let particles = [];
+const numParticles = 60;
+
+/* RESIZE CANVAS */
+function resizeCanvas() {
+  canvas.width = window.innerWidth;
+  canvas.height = canvas.parentElement.offsetHeight;
+}
+resizeCanvas();
+window.addEventListener("resize", resizeCanvas);
+
+/* CREATE PARTICLES */
+for (let i = 0; i < numParticles; i++) {
+  particles.push({
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height,
+    vx: (Math.random() - 0.5) * 0.6,
+    vy: (Math.random() - 0.5) * 0.6
+  });
+}
+
+/* ANIMATION LOOP */
+function animate() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  // draw connections
+  for (let i = 0; i < particles.length; i++) {
+    for (let j = i + 1; j < particles.length; j++) {
+
+      let dx = particles[i].x - particles[j].x;
+      let dy = particles[i].y - particles[j].y;
+      let dist = Math.sqrt(dx * dx + dy * dy);
+
+      if (dist < 130) {
+        ctx.strokeStyle = "rgba(59,130,246,0.15)";
+        ctx.lineWidth = 1;
+
+        ctx.beginPath();
+        ctx.moveTo(particles[i].x, particles[i].y);
+        ctx.lineTo(particles[j].x, particles[j].y);
+        ctx.stroke();
+      }
+    }
+  }
+
+  // draw particles
+  particles.forEach(p => {
+
+    ctx.fillStyle = "rgba(59,130,246,0.7)";
+    ctx.shadowColor = "#3b82f6";
+    ctx.shadowBlur = 10;
+
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, 2.5, 0, Math.PI * 2);
+    ctx.fill();
+
+    // movement
+    p.x += p.vx;
+    p.y += p.vy;
+
+    // bounce
+    if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+    if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+  });
+
+  requestAnimationFrame(animate);
+}
+
+animate();
+</script>
+
+<script>
+  const btn = document.getElementById("menuBtn");
+  const menu = document.getElementById("mobileMenu");
+
+  let open = false;
+
+  btn.addEventListener("click", () => {
+    open = !open;
+
+    if (open) {
+      menu.style.maxHeight = "300px";
+    } else {
+      menu.style.maxHeight = "0px";
+    }
+  });
+</script>
+</body>
+</html>
